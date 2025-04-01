@@ -3,8 +3,10 @@ import torch
 import torchvision as tvision
 import torchvision.transforms as ttransf
 
+from NeuralNetwork import NeuralNetwork
 from torch.utils.data import DataLoader
 from torchvision.datasets import CIFAR10
+from Trainer import Trainer
 from typing import Callable, Optional
 
 class Classifier:
@@ -39,7 +41,7 @@ class Classifier:
     def initalize_data(
         self,
         transform: Optional[Callable],
-        batch_size: int=4,
+        batch_size: int=10,
         is_train_data: bool=True
         ):
 
@@ -63,6 +65,13 @@ class Classifier:
 
 if __name__ == "__main__":
     classifier = Classifier()
+
+    # TODO: Add Args for batch size
+    # TODO: Add Args on if to show outputs or not
     renderer.show_example(classifier.train_loader, classifier.classes)
+    
+    # Train the network
+    trainer = Trainer()
+    trainer.train(classifier.train_loader)
 
     

@@ -12,12 +12,12 @@ def display_images(img):
     plt.show()
 
 # Show an example of the training Images
-def show_example(trainloader: DataLoader, classes):
+def show_example(train_loader: DataLoader, classes):
     # get some random training images
-    data_iter = iter(trainloader)
+    data_iter = iter(train_loader)
     images, labels = next(data_iter)
 
+    # print labels
+    print(' '.join(f'{classes[labels[j]]:5s}' for j in range(10)))
     # show images
     display_images(tvision.utils.make_grid(images))
-    # print labels
-    print(' '.join(f'{classes[labels[j]]:5s}' for j in range(4)))
